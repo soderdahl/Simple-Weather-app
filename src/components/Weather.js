@@ -1,4 +1,5 @@
 import React from "react";
+import DateTime from './DateTime'
 
 
 const Weather = (props) => {
@@ -24,6 +25,18 @@ const Weather = (props) => {
                         <span className="weather__value">{props.description}</span>
                         </p> 
                 }
+                {/* { 
+                    props.timezone && <p className="weather__key">Timezone: 
+                        <span className="weather__value">{props.timezone}</span>
+                        </p> 
+                } */}
+                { 
+                    props.timezone && <p className="weather__key">Date : 
+                        <span className="weather__value"><DateTime timezone={props.timezone}/></span>
+                        </p> 
+                }
+                
+
                 { 
                     props.error && <p className="weather__error"> {props.error} </p> 
                 }

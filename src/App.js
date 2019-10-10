@@ -6,7 +6,7 @@ import Weather from './components/Weather';
 import DateTime from './components/DateTime';
 
 
-const API_KEY = "aa413714394dcf9968d28a6037c003d4";
+const API_KEY = process.env.REACT_APP_API_KEY;
 
 
 class App extends React.Component { 
@@ -35,7 +35,7 @@ if (city && country){
     country: data.sys.country,
     humidity: data.main.humidity,
     description: data.weather[0].description,
-    timezone: data.sys.timezone,
+    timezone: data.timezone /60/60,
     error: ""
   });
 } else {
@@ -59,9 +59,8 @@ if (city && country){
           <div className="main">
             <div className="container">
               <div className="row">
-                <div className="col-xs-5 title-container">
+                <div className="col-xs-5 title-container">                 
                   <Titles />
-                  <DateTime/>
                 </div>
                 <div className="col-xs-7 form-container">
                   <Form getWeather={this.getWeather} />
@@ -71,6 +70,7 @@ if (city && country){
                     city={this.state.city}
                     country={this.state.country}
                     description={this.state.description}
+                    timezone= {this.state.timezone}
                     error={this.state.error}
                   />
                 </div>
